@@ -31,9 +31,9 @@ class MyAQM1602 : public Print {
     virtual size_t write(uint8_t value);
     void init(void);
     void init(TwoWire &w);
-    void init(TwoWire &w,char voltmode);
+    void init(TwoWire &w,unsigned char voltmode);
     void begin(void);
-    void begin(char voltmode);
+    void begin(unsigned char voltmode);
     void home(void);
     void clear(void);
     void displayOn(void);

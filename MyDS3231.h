@@ -20,10 +20,10 @@ public:
   long Sec;
   MyDS3231(TwoWire &w);
 
-  char begin();
+  bool begin();
   uint8_t toDEC(uint8_t data);
   uint8_t toBCD(int16_t data);
-  char getTime();
+  int getTime();
 
 
   uint8_t getAMPM();     //return 0=AM  1=PM

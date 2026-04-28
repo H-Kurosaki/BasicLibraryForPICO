@@ -23,10 +23,10 @@ class MACROM93C46 {
   private:
   	void bitsSend(word value, int len);
   	bool wait();
-  	char pinCS;
-  	char pinSK;
-  	char pinDI;
-  	char pinDO;
+  	int pinCS;
+  	int pinSK;
+  	int pinDI;
+  	int pinDO;
   	bool _WRITE_ENABLED;
     bool _BITMODE;
 

@@ -1,3 +1,5 @@
+//2025/11/4 綛田氏修正
+
 #include "MyGPS2.h"
 
 bool GPS::GPSRead()
@@ -8,12 +10,9 @@ int r;
 
 //GPSからの文字列を受信する
 //Receive character string from GPS
-if(Serial1.available()==0){return false;}
-
-int i = 0;    
-  for (; i < Serial1.available(); i++)
-  {
-  char c=Serial1.read();
+while (Serial1.available())
+{
+  int c=Serial1.read();
   //文字列の開始点
   if(c=='$' || writepoint>SERIAL_BUFFSIZE-1)
     {
@@ -86,7 +85,7 @@ int GPS::DecodeGPS()
   */
   
 int i;
-int sumpos;
+int sumpos = -1;  // 初期化
 unsigned int sum=0;
 //チェックサム計算
 //Checksum calculation
@@ -97,7 +96,7 @@ sum^=gps_txt[i];
 }
 
 char sumtxtL[8];
-sprintf(sumtxtL,"%X\r\n",sum);//照合用チェックサム文字列
+sprintf(sumtxtL, "%02X\r\n", sum);//照合用チェックサム文字列
 //チェックサム照合
 //Checksum verification
 if(strcmp((char *)(gps_txt+sumpos),sumtxtL)==0)

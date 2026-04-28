@@ -11,7 +11,7 @@ MyDS3231::MyDS3231(TwoWire &w) {
 	wire = &w;
 }
 
-char MyDS3231::begin() {
+bool MyDS3231::begin() {
 
   TimeSts=false;
   return 1;
@@ -40,7 +40,7 @@ uint8_t MyDS3231::toBCD(int16_t data) {
   return result;
 }
 
-char MyDS3231::getTime() {
+int MyDS3231::getTime() {
   wire->beginTransmission(_addr);
   wire->write(0x00);
   wire->endTransmission();delay(1);

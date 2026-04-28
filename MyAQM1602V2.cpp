@@ -39,14 +39,14 @@ void MyAQM1602::init(TwoWire &w)
   begin();
 }
 
-void MyAQM1602::init(TwoWire &w,char voltmode)
+void MyAQM1602::init(TwoWire &w,unsigned char voltmode)
 {
   wire = &w;
   begin(voltmode);
 }
 
 
-void MyAQM1602::begin(char voltmode)
+void MyAQM1602::begin(unsigned char voltmode)
 {
 
   delay(40);
